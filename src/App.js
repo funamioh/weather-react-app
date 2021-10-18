@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Weather />
       <footer>
-        <p>This project is coded by Miho Funayama and <a>open-sourced on GitHub</a>. Also hosted on Netlify</p>
+        <p>This project is coded by Miho Funayama and <a href="https://github.com/funamioh/weather-react-app">open-sourced on GitHub</a>. Also hosted on Netlify</p>
       </footer>
     </div>
   );

@@ -11,6 +11,7 @@ export default function Weather(props) {
     function showWeather(response) {
         setLoaded(true);
         setWeather({
+            city: response.data.name,
             temperature: response.data.main.temp,
             description: response.data.weather[0].description,
             wind:response.data.wind.speed,
@@ -32,9 +33,9 @@ export default function Weather(props) {
         setCity(event.target.value);
     }
 
-    let form = <form onSubmit={handleSubmit}><input type="search" placeholder="Enter a cifty" onChange={updateCity}/>
-    <input type="submit" value="Search"/>
-    <button>Current</button>
+    let form = <form onSubmit={handleSubmit}><input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity}/>
+    <input class="search-button" type="submit" value="Search"/>
+    <button className="current-button">Current</button>
     </form>;
 
     if (loaded) {
@@ -42,6 +43,7 @@ export default function Weather(props) {
             <div>
             {form}
             <ul>
+            <h1>{weather.city}</h1>
             <li>Temperature: {Math.round(weather.temperature)}℃</li>
             <li>Description: {weather.description}</li>
             <li>Humidity: {weather.humidity}%</li>

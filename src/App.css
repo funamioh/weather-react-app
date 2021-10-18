@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap");
 
 .App {
-  text-align: center;
   max-width: 800px;
   margin: auto;
   margin-top: 20px;
@@ -36,13 +35,31 @@
   color: white;
   background-color: #de5b7b;
 }
+h1 {
+  font-size: 44px;
+}
 
 img {
-  width: 80px;
+  width: 100px;
 }
 
 li {
   list-style: none;
+  font-size: 22px;
+}
+.temperature {
+  font-size: 40px;
+  font-weight: 900;
+}
+.celsius-link,
+.fahrenheit-link {
+  font-size: 30px;
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

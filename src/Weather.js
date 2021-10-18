@@ -40,17 +40,22 @@ export default function Weather(props) {
 
     if (loaded) {
         return (
-            <div>
+            <div className="container">
             {form}
-            <ul>
-            <h1>{weather.city}</h1>
-            <li>Temperature: {Math.round(weather.temperature)}℃</li>
-            <li>Description: {weather.description}</li>
-            <li>Humidity: {weather.humidity}%</li>
+            <div className="row">
+            <div className="col-6 text-left">
+            <h1 className="text-left">{weather.city}</h1>
+            <li className="text-left">Monday 7:00</li>
+            <li className="text-left">Description: {weather.description}</li>
+            <li className="text-left temperature">{Math.round(weather.temperature)}<a href="#" className="celsius-link">°C</a> | <a href="#" className="fahrenheit-link">°F</a></li>
+            
+            <img src={weather.icon} alt="weather icon" />
+            </div>
+            <div className="col-6">
+            <li className="text-right">Humidity: {weather.humidity}%</li>
             <li>Wind speed: {weather.wind}km/h</li>
-            <li><img src={weather.icon} alt="weather icon" />
-            </li>
-            </ul>
+            </div>
+            </div>
             </div>
         );
     } else {

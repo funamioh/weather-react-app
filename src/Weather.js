@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './App.css';
+import './Weather.css';
 import axios from "axios";
 
 export default function Weather(props) {
@@ -33,8 +33,8 @@ export default function Weather(props) {
         setCity(event.target.value);
     }
 
-    let form = <form onSubmit={handleSubmit}><input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity}/>
-    <input class="search-button" type="submit" value="Search"/>
+    let form = <form onSubmit={handleSubmit}><input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
+    <input class="search-button" type="submit" value="Search" />
     <button className="current-button">Current</button>
     </form>;
 
@@ -46,16 +46,20 @@ export default function Weather(props) {
             <div className="col-6 text-left">
             <h1 className="text-left">{weather.city}</h1>
             <li className="text-left">Monday 7:00</li>
-            <li className="text-left">Description: {weather.description}</li>
-            <li className="text-left temperature">{Math.round(weather.temperature)}<a href="#" className="celsius-link">°C</a> | <a href="#" className="fahrenheit-link">°F</a></li>
-            
-            <img src={weather.icon} alt="weather icon" />
+            <li className="text-left text-capitalize">Description: {weather.description}</li>
             </div>
             <div className="col-6">
             <li className="text-right">Humidity: {weather.humidity}%</li>
             <li>Wind speed: {weather.wind}km/h</li>
             </div>
             </div>
+            <div className="row">
+            <div className="col-6">
+            <div className="clearfix">
+            <img src={weather.icon} alt="weather icon" className="float-left"/>
+             <span className="float-left temperature">{Math.round(weather.temperature)}<a href="#" className="unit">°C</a> | <a href="#" className="unit">°F</a></span>
+            </div></div></div>
+            
             </div>
         );
     } else {

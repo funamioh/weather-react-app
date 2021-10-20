@@ -5,11 +5,12 @@ import axios from "axios";
 
 export default function Weather(props) {
     const [city, setCity] = useState(props.defaultCity);
-    const [weather, setWeather] = useState({loaded: false});
+    const [weather, setWeather] = useState({ready: false});
     
     function showWeather(response) {
+        console.log(response.data);
         setWeather({
-            loaded: true,
+            ready: true,
             city: response.data.name,
             date: new Date(response.data.dt * 1000),
             temperature: response.data.main.temp,
@@ -34,18 +35,18 @@ export default function Weather(props) {
     }
 
     let form = <form onSubmit={handleSubmit}><input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
-    <input class="search-button" type="submit" value="Search" />
+    <input className="search-button" type="submit" value="Search" />
     <button className="current-button">Current</button>
     </form>;
 
-    if (weather.loaded) {
+    if (weather.ready) {
         return (
             <div className="container">
             {form}
             <div className="row">
             <div className="col-6 text-left">
             <h1 className="text-left">{weather.city}</h1>
-            <FormatDate />
+            <FormatDate date={weather.date} />
             <li className="text-left text-capitalize">Description: {weather.description}</li>
             </div>
             <div className="col-6">
@@ -57,10 +58,10 @@ export default function Weather(props) {
             <div className="col-6">
             <div className="clearfix">
             <img src={weather.icon} alt="weather icon" className="float-left"/>
-             <span className="float-left temperature">{Math.round(weather.temperature)}<a href="#" className="unit">°C</a> | <a href="#" className="unit">°F</a></span>
+             <span className="float-left temperature">{Math.round(weather.temperature)}<button href="" className="unit">°C</button> | <button href="" className="unit">°F</button></span>
             </div></div></div>
             
-            </div>
+            </div> 
         );
     } else {
     return form;

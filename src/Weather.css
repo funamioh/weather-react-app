@@ -22,10 +22,12 @@ img {
   font-weight: 900;
 }
 .unit {
-  font-size: 26px;
+  font-size: 22px;
   text-decoration: none;
   position: relative;
   top: -10px;
+  border: none;
+  background-color: transparent;
 }
 
 .Weather footer {

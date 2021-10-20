@@ -1,23 +1,23 @@
 import React, {useState} from "react";
-import './Weather.css';
+import FormatDate from "./FormatDate";
+import "./Weather.css";
 import axios from "axios";
 
 export default function Weather(props) {
-    const [city, setCity] = useState("");
-    //whether or not there is a result
-    const [loaded, setLoaded] = useState(false);
-    const [weather, setWeather] = useState({});
+    const [city, setCity] = useState(props.defaultCity);
+    const [weather, setWeather] = useState({loaded: false});
     
     function showWeather(response) {
-        setLoaded(true);
         setWeather({
+            loaded: true,
             city: response.data.name,
+            date: new Date(response.data.dt * 1000),
             temperature: response.data.main.temp,
             description: response.data.weather[0].description,
             wind:response.data.wind.speed,
             humidity: response.data.main.humidity,
             icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
-        })
+        });
 
     }
     
@@ -38,14 +38,14 @@ export default function Weather(props) {
     <button className="current-button">Current</button>
     </form>;
 
-    if (loaded) {
+    if (weather.loaded) {
         return (
             <div className="container">
             {form}
             <div className="row">
             <div className="col-6 text-left">
             <h1 className="text-left">{weather.city}</h1>
-            <li className="text-left">Monday 7:00</li>
+            <FormatDate />
             <li className="text-left text-capitalize">Description: {weather.description}</li>
             </div>
             <div className="col-6">

@@ -12,6 +12,7 @@ export default function Weather(props) {
         setWeather({
             ready: true,
             city: response.data.name,
+            //Acquiring UNIX time (date and time), need * 1000 because the unit is ms.
             date: new Date(response.data.dt * 1000),
             temperature: response.data.main.temp,
             description: response.data.weather[0].description,

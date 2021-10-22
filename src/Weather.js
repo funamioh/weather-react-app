@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import FormatDate from "./FormatDate";
+import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
 import axios from "axios";
 
@@ -34,37 +34,24 @@ export default function Weather(props) {
     function updateCity(event) {
         setCity(event.target.value);
     }
-
-    let form = <form onSubmit={handleSubmit}><input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
-    <input className="search-button" type="submit" value="Search" />
-    <button className="current-button">Current</button>
-    </form>;
+    
 
     if (weather.ready) {
         return (
             <div className="container">
-            {form}
+            <form onSubmit={handleSubmit}>
             <div className="row">
             <div className="col-6 text-left">
-            <h1 className="text-left">{weather.city}</h1>
-            <FormatDate date={weather.date} />
-            <li className="text-left text-capitalize">Description: {weather.description}</li>
+                <input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
             </div>
             <div className="col-6">
-            <li className="text-right">Humidity: {weather.humidity}%</li>
-            <li>Wind speed: {weather.wind}km/h</li>
-            </div>
-            </div>
-            <div className="row">
-            <div className="col-6">
-            <div className="clearfix">
-            <img src={weather.icon} alt="weather icon" className="float-left"/>
-             <span className="float-left temperature">{Math.round(weather.temperature)}<button href="" className="unit">°C</button> | <button href="" className="unit">°F</button></span>
-            </div></div></div>
-            
+            <input className="search-button" type="submit" value="Search" />
+           </div></div>
+            </form>
+            <WeatherInfo data={weather} />
             </div> 
         );
     } else {
-    return form;
+    return "Loadgin...";
 }
 }

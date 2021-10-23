@@ -47,9 +47,13 @@ export default function Weather(props) {
             <div className="col-6 text-left">
                 <input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
             </div>
-            <div className="col-6">
+            <div className="col-3">
             <input className="search-button" type="submit" value="Search" />
-           </div></div>
+            </div>
+            <div className="col-3">
+            <button className="current-button" type="submit" value="Current" />
+           </div>
+           </div>
             </form>
             <WeatherInfo data={weather} />
             </div> 

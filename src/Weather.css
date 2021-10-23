@@ -31,6 +31,9 @@ img {
 .search-button:hover {
   background-color: #215455;
 }
+.search-button:active {
+  transform: scale(0.95);
+}
 .current-button {
   padding: 4px 12px;
   border-radius: 8px;
@@ -40,6 +43,9 @@ img {
 }
 .current-button:hover {
   background-color: #b44b65;
+}
+.current-button:active {
+  transform: scale(0.95);
 }
 .temperature {
   font-family: "Roboto", sans-serif;

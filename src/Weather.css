@@ -28,12 +28,18 @@ img {
   color: white;
   background-color: #2b6d6e;
 }
+.search-button:hover {
+  background-color: #215455;
+}
 .current-button {
   padding: 4px 12px;
   border-radius: 8px;
   border: 0;
   color: white;
   background-color: #de5b7b;
+}
+.current-button:hover {
+  background-color: #b44b65;
 }
 .temperature {
   font-family: "Roboto", sans-serif;

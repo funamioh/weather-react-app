@@ -12,6 +12,7 @@ export default function Weather(props) {
         console.log(response.data);
         setWeather({
             ready: true,
+            coordinates: response.data.coord,
             city: response.data.name,
             //Acquiring UNIX time (date and time), need * 1000 because the unit is ms.
             date: new Date(response.data.dt * 1000),
@@ -49,7 +50,7 @@ export default function Weather(props) {
             <input className="current-button" type="submit" value="Current" />
             </form>
             <WeatherInfo data={weather} />
-            <WeatherForecast />
+            <WeatherForecast coordinates={setWeather.coord} />
             </div> 
         );
     } else {

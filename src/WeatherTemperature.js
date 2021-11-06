@@ -12,7 +12,8 @@ export default function WeatherTemperature
       setUnit("celsius");
     }
 
-    function fahrenheit() {
+    function fahrenheit(event) {
+      event.preventDefault();
       return(props.celsius * 9/5)+32;
     }
 

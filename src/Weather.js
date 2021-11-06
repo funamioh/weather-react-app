@@ -45,7 +45,7 @@ export default function Weather(props) {
             <form onSubmit={handleSubmit}>
                 <input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
             <input className="search-button" type="submit" value="Search" />
-            <input className="current-button" type="submit" value="Current" />
+            {/*<input className="current-button" type="submit" value="Current" />*/}
             </form>
             <WeatherInfo data={weather} />
             <WeatherForecast coordinates={weather.coordinates} />

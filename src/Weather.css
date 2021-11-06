@@ -58,6 +58,10 @@ img {
   position: relative;
   top: -10px;
 }
+.separation {
+  position: relative;
+  top: -10px;
+}
 
 .Weather footer {
   margin-top: 30px;

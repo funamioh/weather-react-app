@@ -5,7 +5,7 @@
   max-width: 600px;
   margin: 0 auto;
   margin-top: 20px;
-  padding: 20px 10px;
+  padding: 20px 10px 10px;
   border: solid 1px #a2cdcd;
   border-radius: 6px;
   background-image: linear-gradient(
@@ -42,4 +42,7 @@
 }
 .App footer {
   font-size: 16px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 0px;
 }

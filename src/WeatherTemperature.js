@@ -13,13 +13,14 @@ export default function WeatherTemperature
     }
 
     function fahrenheit(event) {
+      event.preventDefault();
       return(props.celsius * 9/5)+32;
     }
 
     if (unit === "celsius" ) {
     return (
         <div className="WeatherTemperature">
-        <span className="float-left temperature">{Math.round(props.celsius)}</span><a href="/" className="unit">°C</a>{" "}<span class="separation">|</span><a href="/" onClick={showFahrenheit} className="unit">°F</a>
+        <span className="float-left temperature">{Math.round(props.celsius)}</span><a href="/" className="unit">°C</a>{" "}<span className="separation">|</span><a href="/" onClick={showFahrenheit} className="unit">°F</a>
         </div>
     );
 } else {

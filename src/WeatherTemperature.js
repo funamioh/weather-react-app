@@ -13,7 +13,6 @@ export default function WeatherTemperature
     }
 
     function fahrenheit(event) {
-      event.preventDefault();
       return(props.celsius * 9/5)+32;
     }
 

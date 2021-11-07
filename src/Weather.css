@@ -57,6 +57,7 @@ img {
   text-decoration: none;
   position: relative;
   top: -10px;
+  cursor: pointer;
 }
 .separation {
   position: relative;

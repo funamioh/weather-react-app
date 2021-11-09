@@ -1,21 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
+body {
+  background: url("https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
+  background-size: 100%;
+  position: relative;
+}
 .App {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
-  margin-top: 20px;
+  position: absolute;
+  transform: translateY(20%);
+  left: 30%;
   padding: 20px 10px 10px;
   border: solid 1px #a2cdcd;
   border-radius: 6px;
-  background-image: linear-gradient(
-    120deg,
-    #98ddca 0%,
-    #d5ecc2 40%,
-    #ffd3b4 60%,
-    #ffaaa7 100%
-  );
-  font-family: "Yanone Kaffeesatz", sans-serif;
+  background-color: white;
+  font-family: "Baloo 2", cursive;
 }
 .input-window {
   padding: 2px 12px;
@@ -41,8 +41,8 @@
   color: #61dafb;
 }
 .App footer {
-  font-size: 16px;
+  font-size: 13px;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 0px;
+  padding-top: 40px;
+  padding-bottom: 5px;
 }

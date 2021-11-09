@@ -8,10 +8,23 @@
 .Weather img {
   width: 100px;
 }
+h1 {
+  color: #000; /* set color if not supported */
+  background: -webkit-linear-gradient(
+    0deg,
+    #9caeff,
+    #7effe7
+  ); /* set gradation for background*/
+  -webkit-background-clip: text; /* hollow out with text*/
+  -webkit-text-fill-color: transparent; /* show background for hollowed out part*/
+  font-family: "Baloo 2", cursive;
+  font-size: 45px;
+  font-weight: 800;
+}
 
 li {
   list-style: none;
-  font-size: 22px;
+  font-size: 18px;
 }
 img {
   width: 90px;
@@ -26,6 +39,8 @@ img {
   border-radius: 8px;
   border: 0;
   color: white;
+  font-size: 16px;
+  font-weight: 600;
   background-color: #2b6d6e;
 }
 .search-button:hover {
@@ -39,6 +54,8 @@ img {
   border-radius: 8px;
   border: 0;
   color: white;
+  font-size: 16px;
+  font-weight: 600;
   background-color: #de5b7b;
 }
 .current-button:hover {
@@ -47,10 +64,12 @@ img {
 .current-button:active {
   transform: scale(0.95);
 }
+.date {
+  font-size: 20px;
+}
 .temperature {
-  font-family: "Roboto", sans-serif;
   font-size: 40px;
-  font-weight: 900;
+  font-weight: 600;
 }
 .unit {
   font-size: 22px;

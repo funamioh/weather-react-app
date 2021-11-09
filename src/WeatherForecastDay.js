@@ -11,7 +11,7 @@ export default function WeatherForecastDay(props) {
     let temperature = Math.round(props.data.temp.min);
     return `${temperature}°`;
   }
-
+  /*format day*/
   function day() {
     let date = new Date(props.data.dt * 1000);
     let day = date.getDay();

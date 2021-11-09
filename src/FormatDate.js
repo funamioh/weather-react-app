@@ -38,7 +38,7 @@ export default function FormattedDate(props) {
   }
   return (
     <div>
-      {currentWeekDay}, {currentDate}th {currentMonth} {hours}:{minutes}
+      {currentWeekDay}, {currentDate} {currentMonth} {hours}:{minutes}
     </div>
   );
 }

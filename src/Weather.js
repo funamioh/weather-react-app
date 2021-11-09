@@ -38,6 +38,20 @@ export default function Weather(props) {
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
         axios.get(apiUrl).then(showWeather);
     } 
+    
+    /*get users current location*/
+    function searchLocation(position) {
+        let apiKey = `b16e4cc8e76040cdfe4ae29b0af21854`;
+        let lati = position.coords.latitude;
+        let longi = position.coords.longitude;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
+        axios.get(apiUrl).then(showWeather);
+
+    }
+    function getLocation(event) {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(searchLocation);
+    }
 
     if (weather.ready) {
         return (
@@ -45,7 +59,7 @@ export default function Weather(props) {
             <form onSubmit={handleSubmit}>
                 <input className="input-window" type="search" placeholder="Enter a cifty" onChange={updateCity} autoFocus="on" />
             <input className="search-button" type="submit" value="Search" />
-            {/*<input className="current-button" type="submit" value="Current" />*/}
+             <input className="current-button" type="submit" value="Current" onClick={getLocation} />
             </form>
             <WeatherInfo data={weather} />
             <WeatherForecast coordinates={weather.coordinates} />

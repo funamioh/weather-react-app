@@ -38,7 +38,7 @@ export default function Weather(props) {
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
         axios.get(apiUrl).then(showWeather);
     } 
-    
+
     /*get users current location*/
     function searchLocation(position) {
         let apiKey = `b16e4cc8e76040cdfe4ae29b0af21854`;
@@ -62,6 +62,7 @@ export default function Weather(props) {
              <input className="current-button" type="submit" value="Current" onClick={getLocation} />
             </form>
             <WeatherInfo data={weather} />
+            <hr/>
             <WeatherForecast coordinates={weather.coordinates} />
             </div> 
         );

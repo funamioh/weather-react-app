@@ -3,14 +3,10 @@
 body {
   background: url("https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
   background-size: 100%;
-  position: relative;
 }
 .App {
-  max-width: 800px;
-  margin: 0 auto;
-  position: absolute;
-  transform: translateY(20%);
-  left: 30%;
+  max-width: 600px;
+  margin: 50px auto;
   padding: 20px 10px 10px;
   border: solid 1px #a2cdcd;
   border-radius: 6px;
@@ -19,7 +15,6 @@ body {
 }
 .input-window {
   padding: 2px 12px;
-  margin-bottom: 20px;
 }
 .search-button {
   padding: 4px 12px;
@@ -45,4 +40,30 @@ body {
   text-align: center;
   padding-top: 40px;
   padding-bottom: 5px;
+}
+
+@media (max-width: 576px) {
+  .App {
+    margin: 20px;
+  }
+  .input-window {
+    margin-bottom: 0;
+  }
+  .search-button {
+    margin: 4px;
+  }
+}
+
+@media (max-width: 320px) {
+  .App {
+    margin: 10px;
+    padding: 10px 0;
+    border: solid 1px #a2cdcd;
+    border-radius: 6px;
+    background-color: white;
+    font-family: "Baloo 2", cursive;
+  }
+  .input-window {
+    max-width: 200px;
+  }
 }

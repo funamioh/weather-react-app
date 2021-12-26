@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AutoComplete from "./AutoComplete";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
@@ -34,7 +35,7 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
   function search() {
-    let apiKey = `b16e4cc8e76040cdfe4ae29b0af21854`;
+    let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
@@ -42,7 +43,7 @@ export default function Weather(props) {
 
   /*get users current location*/
   function searchLocation(position) {
-    let apiKey = `b16e4cc8e76040cdfe4ae29b0af21854`;
+    let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let lati = position.coords.latitude;
     let longi = position.coords.longitude;
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
@@ -56,6 +57,7 @@ export default function Weather(props) {
   if (weather.ready) {
     return (
       <div className="container">
+        <AutoComplete />
         <form onSubmit={handleSubmit}>
           <input
             className="input-window"

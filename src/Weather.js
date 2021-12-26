@@ -3,8 +3,8 @@ import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
 import axios from "axios";
-import SkeletonElement from "./skeletons/SkeletonElement";
-import SkeletonWeather from "./skeletons/SkeletonWeather";
+import "react-loading-skeleton/dist/skeleton.css";
+import SkeletonLoading from "./skeletons/SkeletonLoading";
 
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
@@ -70,7 +70,7 @@ export default function Weather(props) {
             type="submit"
             value="Current"
             onClick={getLocation}
-          />
+          />{" "}
         </form>
         <WeatherInfo data={weather} />
         <hr />
@@ -79,6 +79,6 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return <SkeletonWeather />;
+    return <SkeletonLoading />;
   }
 }

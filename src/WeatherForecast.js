@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./WeatherForecast.css";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay";
+import SkeletonForecast from "./skeletons/SkeletonForecast";
 
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
@@ -43,6 +44,6 @@ export default function WeatherForecast(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse);
-    return null;
+    return <SkeletonForecast />;
   }
 }

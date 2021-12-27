@@ -11,7 +11,7 @@ import {
 import "@reach/combobox/styles.css";
 import "./AutoComplete.css";
 
-export default function AutoComplete() {
+export default function App() {
   const {
     ready,
     value,
@@ -19,16 +19,16 @@ export default function AutoComplete() {
     setValue,
   } = usePlacesAutocomplete();
 
-  const handleInput = (e) => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setValue(e.target.value);
   };
 
-  const handleSelect = (val) => {
+  const handleSelect = (val: string): void => {
     setValue(val, false);
   };
 
-  const renderSuggestions = () => {
-    const suggestions = data.map(({ place_id, description }) => (
+  const renderSuggestions = (): JSX.Element => {
+    const suggestions = data.map(({ place_id, description }: any) => (
       <ComboboxOption key={place_id} value={description} />
     ));
 
@@ -46,7 +46,7 @@ export default function AutoComplete() {
   };
 
   return (
-    <div className="AutoComplete">
+    <div className="App">
       <Combobox onSelect={handleSelect} aria-labelledby="demo">
         <ComboboxInput
           style={{ width: 300, maxWidth: "90%" }}

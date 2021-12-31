@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import Autocomplete from "./PlacesAutocomplete";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
 import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
 import SkeletonLoading from "./skeletons/SkeletonLoading";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 export default function Weather(props) {
+  const [address, setAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [city, setCity] = useState(props.defaultCity);
   const [weather, setWeather] = useState({ ready: false });
 
@@ -54,18 +59,64 @@ export default function Weather(props) {
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
 
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    const ll = await getLatLng(results[0]);
+    console.log(ll);
+    setAddress(value);
+    setCoordinates(ll);
+
+    console.log(address);
+  };
+
   if (weather.ready) {
     return (
       <div className="container">
-        <Autocomplete />
+        <PlacesAutocomplete
+          value={address}
+          onChange={setAddress}
+          onSelect={handleSelect}
+        >
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading,
+          }) => (
+            <div>
+              <input
+                {...getInputProps({
+                  placeholder: "Search Places...",
+                  className: "location-search-input",
+                })}
+              />
+              <div className="autocomplete-dropdown-container">
+                {loading && <div>Loading...</div>}
+                {suggestions.map((suggestion) => {
+                  const className = suggestion.active
+                    ? "suggestion-item-active"
+                    : "suggestion-item";
+                  //inline style for demonstration purpose
+                  const style = suggestion.active
+                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                    : { backgroundColor: "#fffff", cursor: "pointer" };
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
+
         <form onSubmit={handleSubmit}>
-          <input
-            className="input-window"
-            type="search"
-            placeholder="Enter a city"
-            onChange={updateCity}
-            autoFocus="on"
-          />
           <input className="search-button" type="submit" value="Search" />
           <input
             className="current-button"

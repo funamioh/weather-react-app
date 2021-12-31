@@ -41,14 +41,15 @@ li {
 img {
   width: 90px;
 }
-.input-window {
+.location-search-input {
   font-size: 20px;
   padding: 6px 12px;
   margin-bottom: 20px;
 }
-.search-button {
-  padding: 6px 12px;
-  margin: 4px;
+
+.current-button {
+  padding: 4px 12px;
+  margin-left: 4px;
   border-radius: 8px;
   border: 0;
   color: white;
@@ -56,23 +57,8 @@ img {
   font-weight: 600;
   background-color: #2b6d6e;
 }
-.search-button:hover {
-  background-color: #215455;
-}
-.search-button:active {
-  transform: scale(0.95);
-}
-.current-button {
-  padding: 4px 12px;
-  border-radius: 8px;
-  border: 0;
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  background-color: #de5b7b;
-}
 .current-button:hover {
-  background-color: #b44b65;
+  background-color: #215455;
 }
 .current-button:active {
   transform: scale(0.95);

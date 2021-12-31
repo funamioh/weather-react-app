@@ -64,55 +64,57 @@ export default function Weather(props) {
   if (weather.ready) {
     return (
       <div className="container">
-        <PlacesAutocomplete
-          value={address}
-          onChange={setAddress}
-          onSelect={handleSelect}
-        >
-          {({
-            getInputProps,
-            suggestions,
-            getSuggestionItemProps,
-            loading,
-          }) => (
-            <div>
-              <input
-                {...getInputProps({
-                  placeholder: "Search Places...",
-                  className: "location-search-input",
-                })}
-              />
-              <div className="autocomplete-dropdown-container">
-                {loading && <div>Loading...</div>}
-                {suggestions.map((suggestion) => {
-                  const className = suggestion.active
-                    ? "suggestion-item-active"
-                    : "suggestion-item";
-                  //inline style for demonstration purpose
-                  const style = suggestion.active
-                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                    : { backgroundColor: "#fffff", cursor: "pointer" };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style,
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
+        <form>
+          <PlacesAutocomplete
+            value={address}
+            onChange={setAddress}
+            onSelect={handleSelect}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <div>
+                <input
+                  {...getInputProps({
+                    placeholder: "Search Places...",
+                    className: "location-search-input",
+                  })}
+                />
+                <input
+                  className="current-button"
+                  type="submit"
+                  value="Current"
+                  onClick={getLocation}
+                />{" "}
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map((suggestion) => {
+                    const className = suggestion.active
+                      ? "suggestion-item-active"
+                      : "suggestion-item";
+                    //inline style for demonstration purpose
+                    const style = suggestion.active
+                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                      : { backgroundColor: "#fffff", cursor: "pointer" };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style,
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
-        </PlacesAutocomplete>
-        <input
-          className="current-button"
-          type="submit"
-          value="Current"
-          onClick={getLocation}
-        />{" "}
+            )}
+          </PlacesAutocomplete>
+        </form>
         <WeatherInfo data={weather} />
         <hr />
         <WeatherForecast coordinates={weather.coordinates} />

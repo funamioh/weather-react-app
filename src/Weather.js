@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AutoComplete from "./AutoComplete";
+import Autocomplete from "./PlacesAutocomplete";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
@@ -57,7 +57,7 @@ export default function Weather(props) {
   if (weather.ready) {
     return (
       <div className="container">
-        <AutoComplete />
+        <Autocomplete />
         <form onSubmit={handleSubmit}>
           <input
             className="input-window"

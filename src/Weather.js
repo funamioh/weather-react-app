@@ -11,16 +11,15 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 export default function Weather(props) {
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState(props.defaultCity);
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
-  const [city, setCity] = useState(props.defaultCity);
   const [weather, setWeather] = useState({ ready: false });
 
   function showWeather(response) {
     setWeather({
       ready: true,
       coordinates: response.data.coord,
-      city: response.data.name,
+      city: address,
       //Acquiring UNIX time (date and time), need * 1000 because the unit is ms.
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -30,14 +29,10 @@ export default function Weather(props) {
       icon: response.data.weather[0].icon,
     });
   }
-
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
   function search() {
     let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
 
@@ -57,11 +52,12 @@ export default function Weather(props) {
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const ll = await getLatLng(results[0]);
-    console.log(ll);
+
     setAddress(value);
     setCoordinates(ll);
 
     console.log(address);
+    console.log(coordinates);
     search();
   };
 

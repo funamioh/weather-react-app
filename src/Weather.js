@@ -31,11 +31,6 @@ export default function Weather(props) {
     });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    search();
-  }
-
   function updateCity(event) {
     setCity(event.target.value);
   }
@@ -67,6 +62,7 @@ export default function Weather(props) {
     setCoordinates(ll);
 
     console.log(address);
+    search();
   };
 
   if (weather.ready) {
@@ -115,16 +111,12 @@ export default function Weather(props) {
             </div>
           )}
         </PlacesAutocomplete>
-
-        <form onSubmit={handleSubmit}>
-          <input className="search-button" type="submit" value="Search" />
-          <input
-            className="current-button"
-            type="submit"
-            value="Current"
-            onClick={getLocation}
-          />{" "}
-        </form>
+        <input
+          className="current-button"
+          type="submit"
+          value="Current"
+          onClick={getLocation}
+        />{" "}
         <WeatherInfo data={weather} />
         <hr />
         <WeatherForecast coordinates={weather.coordinates} />

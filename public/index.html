@@ -32,16 +32,6 @@
 
     <div id="root"></div>
 
-    <script>
-      var input = document.getElementById("autocomplete");
-      var autocomplete = new google.maps.places.Autocomplete(input, {
-        types: ["(cities)"],
-      });
-      google.maps.event.addListener(autocomplete, "place_changed", function () {
-        var place = autocomplete.getPlace();
-      });
-    </script>
-
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

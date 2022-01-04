@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CurrentLocation from "./CurrentLocation";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
@@ -10,12 +9,10 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-
 export default function Weather(props) {
   const [address, setAddress] = useState(props.defaultCity);
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [weather, setWeather] = useState({ ready: false });
-
   function showWeather(response) {
     setWeather({
       ready: true,
@@ -36,19 +33,27 @@ export default function Weather(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
-
+  /*get users current location*/
+  function searchLocation(position) {
+    let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
+    let lati = position.coords.latitude;
+    let longi = position.coords.longitude;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(showWeather);
+  }
+  function getLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
+  }
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const ll = await getLatLng(results[0]);
-
     setAddress(value);
     setCoordinates(ll);
-
     console.log(address);
     console.log(coordinates);
     search();
   };
-
   if (weather.ready) {
     return (
       <div className="container">
@@ -72,14 +77,18 @@ export default function Weather(props) {
                     types: ["(cities)"],
                   })}
                 />
-                <CurrentLocation />
+                <input
+                  className="current-button"
+                  type="submit"
+                  value="Current"
+                  onClick={getLocation}
+                />{" "}
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {
                     const className = suggestion.active
                       ? "suggestion-item--active"
                       : "suggestion-item";
-
                     const style = suggestion.active
                       ? { backgroundColor: "#ffb6b9", cursor: "pointer" }
                       : { backgroundColor: "#fafafa", cursor: "pointer" };
@@ -90,6 +99,7 @@ export default function Weather(props) {
                           style,
                         })}
                       >
+                        console.log(suggestion.description)
                         <span>{suggestion.description}</span>
                       </div>
                     );

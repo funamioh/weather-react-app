@@ -96,10 +96,10 @@ export default function Weather(props) {
                     const className = suggestion.active
                       ? "suggestion-item--active"
                       : "suggestion-item";
-                    // inline style for demonstration purpose
+
                     const style = suggestion.active
-                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                      : { backgroundColor: "#ff8f93", cursor: "pointer" };
+                      ? { backgroundColor: "#ffb6b9", cursor: "pointer" }
+                      : { backgroundColor: "#fafafa", cursor: "pointer" };
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {

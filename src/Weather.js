@@ -99,7 +99,6 @@ export default function Weather(props) {
                           style,
                         })}
                       >
-                        console.log(suggestion.description)
                         <span>{suggestion.description}</span>
                       </div>
                     );

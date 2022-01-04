@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CurrentLocation from "./CurrentLocation";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import "./Weather.css";
@@ -36,19 +37,6 @@ export default function Weather(props) {
     axios.get(apiUrl).then(showWeather);
   }
 
-  /*get users current location*/
-  function searchLocation(position) {
-    let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
-    let lati = position.coords.latitude;
-    let longi = position.coords.longitude;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(showWeather);
-  }
-  function getLocation(event) {
-    event.preventDefault();
-    navigator.geolocation.getCurrentPosition(searchLocation);
-  }
-
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const ll = await getLatLng(results[0]);
@@ -84,12 +72,7 @@ export default function Weather(props) {
                     types: ["(cities)"],
                   })}
                 />
-                <input
-                  className="current-button"
-                  type="submit"
-                  value="Current"
-                  onClick={getLocation}
-                />{" "}
+                <CurrentLocation />{" "}
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {

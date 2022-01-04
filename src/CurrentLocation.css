@@ -1,0 +1,16 @@
+.current-button {
+  padding: 4px 12px;
+  margin-left: 4px;
+  border-radius: 8px;
+  border: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #2b6d6e;
+}
+.current-button:hover {
+  background-color: #215455;
+}
+.current-button:active {
+  transform: scale(0.95);
+}

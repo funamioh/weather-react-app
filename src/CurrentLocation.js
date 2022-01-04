@@ -5,7 +5,7 @@ import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function CurrentLocation(props) {
-  const [currentLocation, setCurrentLocation] = useState({ ready: false });
+  const [currentLocation, setCurrentLocation] = useState(props.defaultCity);
 
   function showWeather(response) {
     setCurrentLocation({

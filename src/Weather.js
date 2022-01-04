@@ -99,7 +99,7 @@ export default function Weather(props) {
                     // inline style for demonstration purpose
                     const style = suggestion.active
                       ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                      : { backgroundColor: "#ffffff", cursor: "pointer" };
+                      : { backgroundColor: "#ff8f93", cursor: "pointer" };
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {

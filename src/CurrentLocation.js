@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import "./CurrentLocation.css";
 import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -45,5 +46,7 @@ export default function CurrentLocation(props) {
         />{" "}
       </div>
     );
+  } else {
+    return null;
   }
 }

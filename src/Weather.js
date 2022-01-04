@@ -72,7 +72,7 @@ export default function Weather(props) {
                     types: ["(cities)"],
                   })}
                 />
-                <CurrentLocation />{" "}
+                <CurrentLocation />
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {

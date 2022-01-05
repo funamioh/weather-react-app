@@ -74,7 +74,7 @@ export default function Weather(props) {
                   {...getInputProps({
                     placeholder: "Search Places...",
                     className: "location-search-input",
-                    types: ["(cities)"],
+                    types: "geocode",
                   })}
                 />
                 <input

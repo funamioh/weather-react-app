@@ -47,11 +47,20 @@ img {
 }
 
 .current-button {
+  font-size: 20px;
   padding: 4px 12px;
   border-radius: 8px;
   border: 0;
+  margin-left: 2px;
   color: white;
   background-color: #de5b7b;
+}
+
+.current-button:hover {
+  background-color: #e6869e;
+}
+.current-button:active {
+  transform: scale(0.98);
 }
 
 .date {

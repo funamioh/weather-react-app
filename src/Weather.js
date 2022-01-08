@@ -55,6 +55,9 @@ export default function Weather(props) {
     search();
   };
   if (weather.ready) {
+    const searchOptions = {
+      types: ['(cities)'],
+    };
     return (
       <div className="container">
         <form>
@@ -62,6 +65,7 @@ export default function Weather(props) {
             value={address}
             onChange={setAddress}
             onSelect={handleSelect}
+            searchOptions={searchOptions}
           >
             {({
               getInputProps,

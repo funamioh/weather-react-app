@@ -25,14 +25,6 @@ body {
   color: white;
   background-color: #2b6d6e;
 }
-.current-button {
-  padding: 4px 12px;
-  border-radius: 8px;
-  border: 0;
-  color: white;
-  background-color: #de5b7b;
-}
-
 .App-link {
   color: #61dafb;
 }

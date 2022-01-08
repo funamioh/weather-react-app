@@ -9,10 +9,14 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+
 export default function Weather(props) {
   const [address, setAddress] = useState(props.defaultCity);
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [weather, setWeather] = useState({ ready: false });
+
   function showWeather(response) {
     setWeather({
       ready: true,
@@ -56,7 +60,7 @@ export default function Weather(props) {
   };
   if (weather.ready) {
     const searchOptions = {
-      types: ['(cities)'],
+      types: ["(cities)"],
     };
     return (
       <div className="container">
@@ -78,15 +82,17 @@ export default function Weather(props) {
                   {...getInputProps({
                     placeholder: "Search Places...",
                     className: "location-search-input",
-                    types: "geocode",
                   })}
                 />
-                <input
+                <button
                   className="current-button"
                   type="submit"
                   value="Current"
                   onClick={getLocation}
-                />{" "}
+                >
+                  Current
+                  <FontAwesomeIcon icon={faMapMarkedAlt} />
+                </button>{" "}
                 <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map((suggestion) => {

@@ -71,6 +71,10 @@ img {
   text-align: center;
 }
 
+.autocomplete-dropdown-container {
+  border: solid 2px #9caeff;
+}
+
 @media (max-width: 320px) {
   h1 {
     font-size: 40px;

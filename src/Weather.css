@@ -44,7 +44,6 @@ img {
 .location-search-input {
   font-size: 20px;
   padding: 6px 12px;
-  margin-bottom: 20px;
 }
 
 .date {
@@ -72,7 +71,8 @@ img {
 }
 
 .autocomplete-dropdown-container {
-  border: solid 2px #db9cff;
+  border: solid 2px #ffb6b9;
+  border-radius: 12px;
 }
 
 @media (max-width: 320px) {

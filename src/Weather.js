@@ -9,6 +9,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,7 +22,7 @@ export default function Weather(props) {
     setWeather({
       ready: true,
       coordinates: response.data.coord,
-      city: address,
+      city: response.data.name,
       //Acquiring UNIX time (date and time), need * 1000 because the unit is ms.
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -31,24 +32,29 @@ export default function Weather(props) {
       icon: response.data.weather[0].icon,
     });
   }
+
+  /*get users current location*/
+  function searchLocation(position) {
+    let apiKey = `b16e4cc8e76040cdfe4ae29b0af21854`;
+    let lati = position.coords.latitude;
+    let longi = position.coords.longitude;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
+
+    axios.get(apiUrl).then(showWeather);
+  }
+
+  //reverse geocoding//
+  function getLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
+  }
   function search() {
     let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
-  /*get users current location*/
-  function searchLocation(position) {
-    let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
-    let lati = position.coords.latitude;
-    let longi = position.coords.longitude;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
-    axios.get(apiUrl).then(showWeather);
-  }
-  function getLocation(event) {
-    event.preventDefault();
-    navigator.geolocation.getCurrentPosition(searchLocation);
-  }
+
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const ll = await getLatLng(results[0]);

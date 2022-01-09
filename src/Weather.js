@@ -7,7 +7,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 import SkeletonLoading from "./skeletons/SkeletonLoading";
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng,
 } from "react-places-autocomplete";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,7 +14,8 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Weather(props) {
   const [address, setAddress] = useState(props.defaultCity);
-  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  const [latitude, setLatitude] = useState({ lat: null });
+  const [longitude, setLongitude] = useState({ lng: null });
   const [weather, setWeather] = useState({ ready: false });
 
   function showWeather(response) {
@@ -35,10 +35,11 @@ export default function Weather(props) {
 
   /*get users current location*/
   function searchLocation(position) {
-    let apiKey = `b16e4cc8e76040cdfe4ae29b0af21854`;
+    let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
+    let units = "metric";
     let lati = position.coords.latitude;
     let longi = position.coords.longitude;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
 
@@ -51,17 +52,18 @@ export default function Weather(props) {
   function search() {
     let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${coordinates}&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    const ll = await getLatLng(results[0]);
+    const longitude = results[0].geometry.location.lng();
+    const latitude = results[0].geometry.location.lat();
     setAddress(value);
-    setCoordinates(ll);
+    setLatitude(latitude);
+    setLongitude(longitude);
     console.log(address);
-    console.log(coordinates);
     search();
   };
   if (weather.ready) {

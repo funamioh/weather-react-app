@@ -39,7 +39,6 @@ export default function Weather(props) {
     let lati = position.coords.latitude;
     let longi = position.coords.longitude;
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${longi}&units=metric&appid=${apiKey}`;
-
     axios.get(apiUrl).then(showWeather);
   }
 
@@ -48,10 +47,11 @@ export default function Weather(props) {
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
+
   function search() {
     let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${coordinates}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
 

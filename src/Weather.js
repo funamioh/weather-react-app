@@ -7,6 +7,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import SkeletonLoading from "./skeletons/SkeletonLoading";
 import PlacesAutocomplete, {
   geocodeByAddress,
+  getLatLng,
 } from "react-places-autocomplete";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,15 +15,16 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Weather(props) {
   const [address, setAddress] = useState(props.defaultCity);
-  const [latitude, setLatitude] = useState({ lat: null });
-  const [longitude, setLongitude] = useState({ lng: null });
+  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
   const [weather, setWeather] = useState({ ready: false });
 
   function showWeather(response) {
+    console.log(response);
     setWeather({
       ready: true,
       coordinates: response.data.coord,
       city: response.data.name,
+      country: response.data.sys.country,
       //Acquiring UNIX time (date and time), need * 1000 because the unit is ms.
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -52,18 +54,17 @@ export default function Weather(props) {
   function search() {
     let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    const longitude = results[0].geometry.location.lng();
-    const latitude = results[0].geometry.location.lat();
+    const ll = await getLatLng(results[0]);
     setAddress(value);
-    setLatitude(latitude);
-    setLongitude(longitude);
+    setCoordinates(ll);
     console.log(address);
+    console.log(coordinates);
     search();
   };
   if (weather.ready) {

@@ -15,7 +15,8 @@ import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Weather(props) {
   const [address, setAddress] = useState(props.defaultCity);
-  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  const [latitude, setLatitude] = useState({ lat: null });
+  const [longitude, setLongitude] = useState({ lng: null });
   const [weather, setWeather] = useState({ ready: false });
 
   function showWeather(response) {
@@ -54,18 +55,18 @@ export default function Weather(props) {
   function search() {
     let apiKey = `730afeb398d3874cb3c0cb8d98df8b85`;
     let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${address}&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(showWeather);
   }
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    const ll = await getLatLng(results[0]);
+    const latitude = await getLatLng(results[0].geometry.location.lat());
+    const longitude = await getLatLng(results[0].geometry.location.lng());
     console.log(results[0]);
     setAddress(value);
-    setCoordinates(ll);
-    console.log(address);
-    console.log(coordinates);
+    setLatitude(latitude);
+    setLongitude(longitude);
     search();
   };
   if (weather.ready) {

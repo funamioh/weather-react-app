@@ -60,6 +60,7 @@ export default function Weather(props) {
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
+    console.log(value);
     const ll = await getLatLng(results[0]);
     setAddress(value);
     setCoordinates(ll);

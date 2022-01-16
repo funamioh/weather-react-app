@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
 body {
-  background: url("https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80");
+  background: url("https://c4.wallpaperflare.com/wallpaper/914/746/419/abstract-digital-art-minimalism-simple-background-wallpaper-preview.jpg");
   background-size: 100%;
 }
 .App {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px 10px 10px;
+  box-shadow: 0px 2px 74px #0b254026;
   border: solid 1px #a2cdcd;
   border-radius: 6px;
   background-color: white;
@@ -16,6 +17,7 @@ body {
 
 .input-window {
   padding: 2px 12px;
+  box-shadow: 0px 2px 74px #0b254026;
 }
 .search-button {
   padding: 4px 12px;

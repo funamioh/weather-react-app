@@ -8,6 +8,7 @@ body {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px 10px 10px;
+  box-shadow: 0px 2px 74px #0b254026;
   border: solid 1px #a2cdcd;
   border-radius: 6px;
   background-color: white;
@@ -16,6 +17,7 @@ body {
 
 .input-window {
   padding: 2px 12px;
+  box-shadow: 0px 2px 74px #0b254026;
 }
 .search-button {
   padding: 4px 12px;

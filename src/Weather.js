@@ -25,7 +25,7 @@ export default function Weather(props) {
       city: response.data.name,
       country: response.data.sys.country,
       //Acquiring UNIX time (date and time), need * 1000 because the unit is ms.
-      date: new Date(response.data.dt * 1000),
+      date: new Date(response.data.dt * 1000 - response.data.timezone * 1000),
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,

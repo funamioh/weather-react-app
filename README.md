@@ -1,3 +1,9 @@
+# React Weather App
+
+## Overview
+
+A weather app that displays the weather around the world. By adding features, such as React Skeleton and place name autocomplete, it has imptoved user experience. Data is fetched from [OpenWeatherMap API](https://openweathermap.org/api).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

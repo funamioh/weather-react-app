@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./styles/index.css";
 import "bootstrap/dist/css/bootstrap.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import App from "./components/App";
+import reportWebVitals from "./components/reportWebVitals";
 import "react-loading-skeleton/dist/skeleton.css";
 
 ReactDOM.render(

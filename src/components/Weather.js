@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
-import "./Weather.css";
+import "../styles/Weather.css";
 import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
-import SkeletonLoading from "./skeletons/SkeletonLoading";
+import SkeletonLoading from "../skeletons/SkeletonLoading";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
